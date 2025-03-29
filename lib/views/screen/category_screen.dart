@@ -39,44 +39,46 @@ class _CategoryScreenState extends State<CategoryScreen> {
         backgroundColor: Colors.white,
         title: CustomAppbar(),
       ),
-      body: SingleChildScrollView(
-        child: Column(
+      body:
+       Column(
           children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
-              height: MediaQuery.of(context).size.height,
-              child: GridView.builder(
-                physics: ClampingScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 13,
-                    mainAxisSpacing: 10,
-                    mainAxisExtent: 400
-                ),
-                itemCount: categoryResult.length,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => FullscreenImage(imgUrl: categoryResult[index].imgSrc!),));
-                    },
-                    child: Container(
-                      height: 800,width: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: Image.network(height: 800,width: 50,fit: BoxFit.cover,
-                            categoryResult[index].imgSrc!),
-                      ),),
-                  );
-                },),
-
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+                height: MediaQuery.of(context).size.height,
+                child: GridView.builder(
+                  physics: ClampingScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 13,
+                      mainAxisSpacing: 10,
+                      mainAxisExtent: 400
+                  ),
+                  itemCount: categoryResult.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => FullscreenImage(imgUrl: categoryResult[index].imgSrc!),));
+                      },
+                      child: Container(
+                        height: 800,width: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.network(height: 800,width: 50,fit: BoxFit.cover,
+                              categoryResult[index].imgSrc!),
+                        ),),
+                    );
+                  },),
+              
+              ),
             )
           ],
         ),
-      ),
+
     );
   }
 }

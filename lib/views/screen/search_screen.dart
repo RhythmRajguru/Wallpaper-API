@@ -38,48 +38,49 @@ class _SearchScreenState extends State<SearchScreen> {
         backgroundColor: Colors.white,
         title: CustomAppbar(),
       ),
-      body: SingleChildScrollView(
-        child: Column(
+      body:  Column(
           children: [
             Container(padding:EdgeInsets.symmetric(horizontal: 10),child: SearchBarWidget()),
 
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
-              height: MediaQuery.of(context).size.height,
-              child: GridView.builder(
-                physics: ClampingScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 13,
-                    mainAxisSpacing: 10,
-                    mainAxisExtent: 400
-                ),
-                itemCount: searchResult.length,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => FullscreenImage(imgUrl: searchResult[index].imgSrc,),));
-                    },
-                    child: Hero(
-                      tag: searchResult[index].imgSrc!,
-                      child: Container(
-                        height: 800,width: 50,
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.network(height: 800,width: 50,fit: BoxFit.cover,
-                              searchResult[index].imgSrc!),
-                        ),),
-                    ),
-                  );
-                },),
-
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+                height: MediaQuery.of(context).size.height,
+                child: GridView.builder(
+                  physics: ClampingScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 13,
+                      mainAxisSpacing: 10,
+                      mainAxisExtent: 400
+                  ),
+                  itemCount: searchResult.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => FullscreenImage(imgUrl: searchResult[index].imgSrc,),));
+                      },
+                      child: Hero(
+                        tag: searchResult[index].imgSrc!,
+                        child: Container(
+                          height: 800,width: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Image.network(height: 800,width: 50,fit: BoxFit.cover,
+                                searchResult[index].imgSrc!),
+                          ),),
+                      ),
+                    );
+                  },),
+              
+              ),
             )
           ],
-        ),
+
       ),
     );
   }
