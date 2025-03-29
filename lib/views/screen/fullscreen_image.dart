@@ -98,10 +98,12 @@ class _FullscreenImageState extends State<FullscreenImage> {
                                 setWallpaper(widget.imgUrl!, WallpaperType.home);
                                 Navigator.pop(context);
                               }, child: Text('Set for HomeScreen',style: TextStyle(color: Colors.black),)),
+                              Divider(color: Colors.black26,height: 0.5,),
                               TextButton(onPressed: (){
                                 setWallpaper(widget.imgUrl!, WallpaperType.lock);
                                 Navigator.pop(context);
                               }, child: Text('Set for LockScreen',style: TextStyle(color: Colors.black),)),
+                              Divider(color: Colors.black26,height: 0.5,),
                               TextButton(onPressed: (){
                                 setWallpaper(widget.imgUrl!, WallpaperType.system);
                                 Navigator.pop(context);
